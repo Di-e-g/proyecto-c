@@ -1,0 +1,62 @@
+int main() {
+    float cantidad;
+    int opcion_origen, opcion_destino;
+    float tasa_conversion[3][3] = {
+        {1.0, 0.12, 0.11},   // Tasa de conversión para convertir desde GTQ
+        {8.55, 1.0, 0.88},   // Tasa de conversión para convertir desde USD
+        {9.25, 1.13, 1.0}    // Tasa de conversión para convertir desde EUR
+    };
+    
+    printf("Bienvenido al conversor de monedas\n");
+    printf("Seleccione la moneda de origen:\n");
+    printf("1. Quetzales (GTQ)\n");
+    printf("2. Dólares estadounidenses (USD)\n");
+    printf("3. Euros (EUR)\n");
+    scanf("%d", &opcion_origen);
+    
+    printf("Ingrese la cantidad a convertir: ");
+    scanf("%f", &cantidad);
+    
+    printf("Seleccione la moneda de destino:\n");
+    printf("1. Quetzales (GTQ)\n");
+    printf("2. Dólares estadounidenses (USD)\n");
+    printf("3. Euros (EUR)\n");
+    scanf("%d", &opcion_destino);
+    
+    // Verificar si las opciones son válidas
+    if (opcion_origen < 1 || opcion_origen > 3 || opcion_destino < 1 || opcion_destino > 3) {
+        printf("Opción inválida. Por favor, seleccione una opción válida.\n");
+        return 1;
+    }
+    
+    // Realizar la conversión
+    float resultado = cantidad * tasa_conversion[opcion_origen - 1][opcion_destino - 1];
+    
+    // Mostrar el resultado
+    printf("%.2f ", cantidad);
+    switch(opcion_origen) {
+        case 1:
+            printf("GTQ");
+            break;
+        case 2:
+            printf("USD");
+            break;
+        case 3:
+            printf("EUR");
+            break;
+    }
+    printf(" son equivalentes a %.2f ", resultado);
+    switch(opcion_destino) {
+        case 1:
+            printf("GTQ\n");
+            break;
+        case 2:
+            printf("USD\n");
+            break;
+        case 3:
+            printf("EUR\n");
+            break;
+    }
+    
+    return 0;
+}
